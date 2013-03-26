@@ -7,6 +7,8 @@ Gt::Application.configure do
   config.cache_classes = false
   
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {:address => "localhost", :port => 1025}
 
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
@@ -14,6 +16,16 @@ Gt::Application.configure do
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
+  ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.smtp_settings = {
+   :tls => true,
+   :address => "smtp.gmail.com",
+   :port => 587,
+   :domain => "gmail.com",
+   :authentication => :login,
+   :user_name => "[username]",
+   :password => "[password]"
+ }
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
