@@ -2,7 +2,7 @@ class ConfirmationsController < Devise::ConfirmationsController
   def show
     @user = User.find_by_confirmation_token(params[:confirmation_token])
   end
-ef confirm_user
+ def confirm_user
     @user = User.find_by_confirmation_token(params[:user][:confirmation_token])
     if @user.update_attributes(params[:user]) and @user.password_match?
       @user = User.confirm_by_token(@user.confirmation_token)
@@ -12,5 +12,4 @@ ef confirm_user
       render :show
     end
   end
-  
-end
+ end

@@ -17,15 +17,14 @@ Gt::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
   ActionMailer::Base.delivery_method = :smtp
-ActionMailer::Base.smtp_settings = {
-   :tls => true,
-   :address => "smtp.gmail.com",
-   :port => 587,
-   :domain => "gmail.com",
-   :authentication => :login,
-   :user_name => "[username]",
-   :password => "[password]"
- }
+config.action_mailer.smtp_settings = {
+:address => "10.10.10.11",
+:port => 25,
+:domain => 'vertisinfotech.com',
+:openssl_verify_mode => 'none'
+}
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.perform_deliveries = true
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
